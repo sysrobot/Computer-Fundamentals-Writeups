@@ -1,5 +1,3 @@
-# Computer-Fundamentals-Writeups
-
 ## Overview
 This repository is essentially my documented writeups of the practical/projects I have completed,
 from the book `"How Computers Really Work: A Hands-On Guide to the Inner Workings of the Machine"` which is as book that goes into the deep internal details
@@ -13,5 +11,5 @@ If you wish to have a look at all my projects, I will provide screenshots in the
 alongside a writeup of how I done it and any mistakes I made, also with any deep thinking/processing that was required from me.
 
 ---
-
 <img width="378" height="500" alt="image" src="https://github.com/user-attachments/assets/eaa8e08a-294f-4f7b-ad79-3eada04ed402" />
+---
