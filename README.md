@@ -1,6 +1,5 @@
 ## Overview
-**This repository documents my hands-on journey through:
-**
+**This repository documents my hands-on journey through:**
 > *"How Computers Really Work: A Hands-On Guide to the Inner Workings of the Machine"*
 
 **The focus is not just theory, but practical implementation—breaking down how computers function from first principles.**
