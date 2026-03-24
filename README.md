@@ -17,8 +17,8 @@
 
 ---
 ## Purpose
-**The goal of this repository is to build a deep, low-level understanding of how systems actually work.
-**
+**The goal of this repository is to build a deep, low-level understanding of how systems actually work.**
+
 **In offensive security, surface-level knowledge is a limitation. Real exploitation requires:**
 - Understanding how memory is structured  
 - How instructions are executed at the CPU level  
