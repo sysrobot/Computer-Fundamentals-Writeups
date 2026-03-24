@@ -36,14 +36,15 @@ This is about building the mindset required to become effective in offensive sec
 ## Documentation
 Each project in this repository follows a structured approach:
 
-- **Writeups** — Clear breakdown of what was done and why  
-- **Screenshots** — Supporting visual proof of progress and results  
-- **Process** — Step-by-step execution and methodology  
-- **Mistakes** — Failures, debugging, and corrections  
-- **Thought Process** — Deeper reasoning behind decisions and solutions  
+- **Writeups:**: Clear breakdown of what was done and why  
+- **Screenshots:** Supporting visual proof of progress and results  
+- **Process:** Step-by-step execution and methodology  
+- **Mistakes:** Failures, debugging, and corrections  
+- **Thought Process:** Deeper reasoning behind decisions and solutions  
 
 This is not just a collection of completed tasks,  
-it is a record of learning, problem-solving, and understanding systems at a low level.
+it is a record of learning, problem-solving, and understanding systems at a lower level,
+to  ultimately support my desire to understand a system & assist my journey towards ethical hacking.
 
 ---
 <img width="378" height="500" alt="image" src="https://github.com/user-attachments/assets/eaa8e08a-294f-4f7b-ad79-3eada04ed402" />
