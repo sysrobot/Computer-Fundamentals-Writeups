@@ -25,6 +25,7 @@ The two instructions following end save the result to a location in memory . 
 tion moves the address of the memory location named result into the r1 register. After that, the 
 code stores the value in the r0 register (which happens to be the calculated factorial) to the result 
 memory address, referenced by r1: 
+
 <img width="157" height="72" alt="image" src="https://github.com/user-attachments/assets/6df3e2e2-748f-42ec-a164-8eb372daa8c6" />
 
 
