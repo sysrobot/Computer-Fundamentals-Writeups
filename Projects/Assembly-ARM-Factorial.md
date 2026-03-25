@@ -253,7 +253,6 @@ disas 0x10074 0x100a4
 * Instructions are mapped to fixed memory locations
 * `.data` may appear as instructions when over-disassembled
 * No output ≠ no execution
-
 ---
 
 ## Conclusion
@@ -265,3 +264,6 @@ This project demonstrates:
 * The importance of debugging to truly understand execution
 
 ---
+
+# Side Note
+Although I forgot to screenshot myself using a debugger to halt the execution of the program and using breakpoints, I had completed the project for it.
