@@ -79,7 +79,7 @@ Answer: We can use a debugger, a program that can examine a process as it runs.
  This entry point address corresponds to the _start label, since that’s where the program begins.
 
 3) Now lets disassemble this machine code using `gdb`, starting at `Entry point: 0x10074`.
-   <img width="313" height="67" alt="image" src="https://github.com/user-attachments/assets/9915f494-88dd-40e2-9786-467bd5d5abc2" />
+  <img width="683" height="132" alt="image" src="https://github.com/user-attachments/assets/23b5ad69-68b4-4995-94ec-06553c2dceec" />
 As you can see, the first 4 instructions have been disassembled and we can see them clearly.
 Additionally, if we want to view all of the instructions, we nee to know the ending address, which can easily be calculated by counting the amount of instructions you have multiplied by 4 (1 instruction = 4 bytes).
 From there, we just add the amount of bytes (48) in our case to the entry point.
@@ -92,10 +92,6 @@ And the output (specically `$1`) is just a convenience variable stored in `gdb`.
 The value after the equals sign is the printed value, the result of the calculation, `0x100a4` in this case.
 
 5) Now that we know the ending address (`0x100a4`), now we can ask `gdb` to disassemble our WHOLE program, not just the 4 instructions.
-   <img width="261" height="157" alt="image" src="https://github.com/user-attachments/assets/3526b7c3-4e3a-4514-91bd-9c16cbaf45cf" />
+   <img width="686" height="327" alt="image" src="https://github.com/user-attachments/assets/7c2691ce-5932-4f89-a3c2-89252702d5e1" />
 As you can see, every instruction has been assigned an address, unlike in our assembled code in which we used labels.
 Furthermore, the references to n and result have been replaced with memory offsets relative to the program counter register.
-
-6) Now run and examine the program using breaking points, which tells the debugger to halt execution when a certain address is reached. Setting a breakpoint on a certain address halts execution immediately before the corresponding instruction is executed
-   ![Uploading image.png…]()
-
