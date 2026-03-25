@@ -31,11 +31,8 @@ memory address, referenced by r1:
 
 The last three instructions in the .text section are used to cleanly exit the program . This 
 requires the help of the operating system
-![Uploading image.png…]()
+<img width="663" height="97" alt="image" src="https://github.com/user-attachments/assets/78526b95-54d8-4690-8537-c9f8ac30c0ee" />
 
----
-
-Explaining the code logic:
 START
 `ldr  r1, =n` - We firts load the memory address of `n` into register 1.
 from there, `ldr  r0, [r1]` we take the memory from the memory address of register one and set `r0` to the value of `n`
@@ -51,3 +48,54 @@ As 5 > 0, `mul  r0, r3, r0` we set r0 to be = `r3 x r0` (assuming the value of r
 END
 `ldr  r1, =result` - We set r1 register to be equal to the memory address of `result` which we touched in `.data`.
 `str  r0, [r1]` - In which we access the value of the memory address (`r1` stores the memory address of result!), store the value of `r0` (which would be 120 if you done the maths) & store it into the memory address value. (`MEMORY[r1] = r0`)
+
+---
+NEXT UP:
+
+We need to assemble this script so the CPU can understand it which will turn it into an object file, from there we will use a linker to make the file executable.
+
+<img width="662" height="67" alt="image" src="https://github.com/user-attachments/assets/9dc68e64-40f8-4678-9c58-6eebc6eac073" />
+Here, we have converted our assembly code into machine code, however we need to use a linker to make this code executable.
+
+To make this object file executable, I will use a linker.
+The command below demonstrates this: 
+
+<img width="376" height="51" alt="image" src="https://github.com/user-attachments/assets/91f69520-ad04-46a1-977f-edd626cf006d" />
+
+
+However, running this script as demonstrated below, doess not ACTUALLY output anything.
+<img width="668" height="403" alt="image" src="https://github.com/user-attachments/assets/568d34fc-efe8-432a-b96e-30327a141591" />
+Reason being, this code does not output anything, rather just saves the result in memory, then exits. 
+To interact with the user, the program would need to request some help from the operating system, as we are keeping this program as minimal as possible - we will NOT go through this at this moment in time.
+
+Rather than adding and adjusting the code to add input or output to the sscreen, **How can you tell what it’s doing?**
+Answer: We can use a debugger, a program that can examine a process as it runs.
+
+1) We first use `gbd` to load the fac file, but no instructions execute yet.
+ <img width="518" height="157" alt="image" src="https://github.com/user-attachments/assets/102bbab4-d007-4762-a6c8-bf53bc2de7f3" />
+
+2) From there, in the prompt we type `info files` to to view the start address of the program.
+ <img width="561" height="191" alt="image" src="https://github.com/user-attachments/assets/77070459-15b3-4deb-a40d-df72ffbdf553" />
+ This entry point address corresponds to the _start label, since that’s where the program begins.
+
+3) Now lets disassemble this machine code using `gdb`, starting at `Entry point: 0x10074`.
+   <img width="313" height="67" alt="image" src="https://github.com/user-attachments/assets/9915f494-88dd-40e2-9786-467bd5d5abc2" />
+As you can see, the first 4 instructions have been disassembled and we can see them clearly.
+Additionally, if we want to view all of the instructions, we nee to know the ending address, which can easily be calculated by counting the amount of instructions you have multiplied by 4 (1 instruction = 4 bytes).
+From there, we just add the amount of bytes (48) in our case to the entry point.
+
+4) Now lets use `gdb` to do this without the worry of human error.
+ <img width="637" height="442" alt="image" src="https://github.com/user-attachments/assets/cc6ec1ba-4859-486e-bcd7-2566ce5971c9" />
+May look quite intimidating, but it really is not.
+`print/x` simply prints the output in the hexadeximal format.
+And the output (specically `$1`) is just a convenience variable stored in `gdb`.
+The value after the equals sign is the printed value, the result of the calculation, `0x100a4` in this case.
+
+5) Now that we know the ending address (`0x100a4`), now we can ask `gdb` to disassemble our WHOLE program, not just the 4 instructions.
+   <img width="261" height="157" alt="image" src="https://github.com/user-attachments/assets/3526b7c3-4e3a-4514-91bd-9c16cbaf45cf" />
+As you can see, every instruction has been assigned an address, unlike in our assembled code in which we used labels.
+Furthermore, the references to n and result have been replaced with memory offsets relative to the program counter register.
+
+6) Now run and examine the program using breaking points, which tells the debugger to halt execution when a certain address is reached. Setting a breakpoint on a certain address halts execution immediately before the corresponding instruction is executed
+   ![Uploading image.png…]()
+
