@@ -2,7 +2,7 @@ We will be examining an executable file without the original assembly language s
 
 Below, we have our `fac` named executable file which we used previously when we assembled it and then made it executable using a linker.
 
-![Executable File](https://github.com/user-attachments/assets/f04c1021-7ed5-451f-70892ecb150d)
+![Executable File]([https://github.com/user-attachments/assets/f04c1021-7ed5-451f-70892ecb150d](https://github-production-user-asset-6210df.s3.amazonaws.com/270512070/570617525-f04c1021-7ed5-4ed3-8632-70892ecb150d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20260327%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260327T222714Z&X-Amz-Expires=300&X-Amz-Signature=3727aed1f9f224298719144939c8a6cf185647d2e13a22b7b64d3bc03c204017&X-Amz-SignedHeaders=host))
 
 ## 1) Examining Bytes with Hexdump
 We look at the bytes contained in the file as hexadecimal values by using the `hexdump` tool.
