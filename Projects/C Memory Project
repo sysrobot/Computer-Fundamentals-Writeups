@@ -1,0 +1,162 @@
+Absolutely! I can restructure your documentation to make it cleaner and more organized for GitHub, while keeping **all your words intact**. Here's a polished version with headings, numbered steps, and better readability:
+
+---
+
+# Exploring Variables in Memory with C
+
+In this project, we will write high-level code that uses variables and examine how this works in memory.
+
+---
+
+## Step 1: Create the Source File
+
+First, create a file in your root directory called `vars.c`.
+Use the command:
+
+```bash
+nano vars.c
+```
+
+This opens the file for editing, allowing you to add your script.
+
+<img width="665" height="282" alt="image" src="https://github.com/user-attachments/assets/68914c42-f7fb-4cb2-8949-e24bf0ca9cdc" />
+
+---
+
+## Step 2: Examine the Source Code
+
+Before running the program, let's examine the code.
+
+### 2.1 Header Files
+
+The code begins by including a couple of header files.
+These files include details required by the C compiler about the `printf` and `raise` functions that are used later in the program.
+
+<img width="185" height="38" alt="image" src="https://github.com/user-attachments/assets/c68afa0b-f381-4df0-9cef-9d9a15204a95" />
+
+### 2.2 Main Function
+
+Next, you see the `main` function defined — this is the entry point of the program where execution begins.
+
+* The program declares two integer variables: `points` and `year`, and assigns values to them.
+* It prints both the values of the variables and their memory addresses (in hexadecimal).
+* The statement `raise(SIGINT)` halts the program’s execution.
+
+> Note: Halting execution with `raise(SIGINT)` is a debugging technique and is not used in normal end-user code.
+
+<img width="665" height="282" alt="image" src="https://github.com/user-attachments/assets/68914c42-f7fb-4fcb2-8949-e24bf0ca9cdc" />
+
+---
+
+## Step 3: Compile the Program
+
+Compile `vars.c` into an executable using the **GNU C Compiler (gcc)**:
+
+```bash
+gcc vars.c -o vars
+```
+
+This command compiles and links the code, producing an executable named `vars`.
+
+<img width="412" height="15" alt="image" src="https://github.com/user-attachments/assets/1736a688-1da6-4c9f-be55-a354d91a1e53" />
+
+---
+
+## Step 4: Run the Executable
+
+Running the compiled program prints the variable values alongside their memory addresses:
+
+```bash
+./vars
+```
+
+<img width="377" height="56" alt="image" src="https://github.com/user-attachments/assets/9d9a6467-5cc9-4f63-ad38-e99699a5c108" />
+
+---
+
+## Step 5: Examine Variables with `gdb`
+
+Once the program works, you can run it under the GNU Debugger (gdb) to examine variables in memory.
+
+```bash
+gdb vars
+```
+
+<img width="660" height="491" alt="image" src="https://github.com/user-attachments/assets/fceb7086-0871-4e34-a477-fbde70ab6438" />
+
+At this point, `gdb` has loaded the file but no instructions have run.
+From the `(gdb)` prompt, run the program until it hits the `raise(SIGINT)` statement:
+
+<img width="643" height="152" alt="image" src="https://github.com/user-attachments/assets/67ded9a5-09a9-408d-b27e-324b98606d80" />
+
+---
+
+## Step 6: Examine Memory Addresses
+
+Now that we know the memory addresses, we can examine what’s stored at those addresses.
+
+For example, the addresses in this program are:
+
+* `0xffffe030`
+* `0xffffe034`
+
+In this output:
+
+* `year` is stored at the lower address.
+* `points` is stored 4 bytes later.
+
+<img width="375" height="31" alt="image" src="https://github.com/user-attachments/assets/598788d9-d40d-43e9-8516-4c2e70dd0d14" />
+
+---
+
+## Step 7: Dump Memory Contents
+
+To dump memory starting from the lower address (`0xffffe034`, or `year`):
+
+* The command outputs three 32-bit values in hexadecimal starting at address `0x7efff1d0`.
+* Example (from the book):
+
+```
+0x7efff1d0: 0x000007e4 0x0000001b 0x00000000
+```
+
+* Here:
+
+  * `0x000007e4` = 2020 (decimal) → `year`
+  * `0x0000001b` = 27 (decimal) → `points`
+  * The next value is 0 and not one of our variables.
+
+<img width="712" height="63" alt="image" src="https://github.com/user-attachments/assets/7700c256-17cb-42de-be7d-38ff93fe5025" />
+
+---
+
+## Step 8: View Memory in Decimal
+
+Memory is usually examined in hexadecimal. To view it in decimal, use a different gdb command:
+
+<img width="412" height="58" alt="image" src="https://github.com/user-attachments/assets/ddd8062c-f3f3-419e-868d-e25715c32047" />
+
+* Variables are 32-bit (4-byte) chunks.
+* Memory is byte-addressable, meaning each byte has its own address.
+* `points` is 4 bytes after `year`.
+
+---
+
+### Step 9: Examine Byte-Level Memory
+
+Looking at memory as a series of bytes:
+
+<img width="927" height="87" alt="image" src="https://github.com/user-attachments/assets/6afdda03-25c1-4fca-aa2f-e442b4443f07" />
+
+* The value for `year` is emphasized.
+* Least significant byte (`0xe4`) comes first due to **little-endian data storage**.
+
+---
+
+## Step 10: Exit gdb
+
+After examining memory and variables, exit `gdb`:
+
+```bash
+quit
+```
