@@ -1,5 +1,3 @@
-Absolutely! I can restructure your documentation to make it cleaner and more organized for GitHub, while keeping **all your words intact**. Here's a polished version with headings, numbered steps, and better readability:
-
 ---
 
 # Exploring Variables in Memory with C
