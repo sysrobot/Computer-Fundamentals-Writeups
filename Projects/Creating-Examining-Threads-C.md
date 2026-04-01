@@ -35,3 +35,4 @@ We’ll then observe the thread running.
    This is expected for the first thread in a process.
 
 5) Let us halt the execution of this program by either using `CTRL+C` or kill the process via its `PID` using: `kill (PID of the process`).
+**PS: MAKE SURE TO RUN THE `kill (PID)` COMMAND IN THE OTHER TAB!**
